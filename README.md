@@ -78,3 +78,8 @@ If the animal is a particular breed, we will present more information about that
 Stretch: Images of the (or some) of the animals.
 
 Favorite: User can save their favorite pets to a "wish list".
+
+## Git Process
+
+Our Git plan is to, at the end of the day, push our work  up on our own branches. Then the next morning, while together, we will merge the work to 'main'. Next, we will individualy pull 'main' to our local machines.
+This way, when we begin working on the new day we will be all caught up and avoid gituations.
