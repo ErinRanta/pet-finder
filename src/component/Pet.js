@@ -3,14 +3,14 @@ import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 
 
-class pet extends React.Component {
+class Pet extends React.Component {
     constructor(props) {
         super(props);
       this.state = {
         pets: []
       }
     }
-}
+
 
 // axios? componentdidMount?//
 
@@ -24,7 +24,7 @@ class pet extends React.Component {
 render(){
 return (
     <>
-<h2></h2>
+    <h2></h2>
 
     <Carousel>
       <Carousel.Item>
@@ -65,10 +65,12 @@ return (
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-  );
   </>
+  );
+}
+
 }
 
 
-export default pet;
+export default Pet;
 
