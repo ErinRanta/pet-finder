@@ -1,15 +1,27 @@
 import React from 'react';
 
-import SearchForm from './SearchForm'
-import Pet from './component/pet'
+import Header from './component/Header'
+import SearchForm from './component/SearchForm'
+import Pet from './component/Pet'
+import Footer from './component/Footer'
+
 
 class Main extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            pets: []
+        }
+    }
 
     render () {
         return (
             <>
-            <SearchForm />
-            <Pet />
+                <Header />
+                <SearchForm />
+                <Pet pets={this.state.pets} />
+                <Footer />
             </>
         )
     }
