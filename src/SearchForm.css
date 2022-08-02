@@ -1,0 +1,12 @@
+#searchForm {
+    width: 500px;
+    border: 2px solid black;
+}
+
+#cityOrZip .form-control {
+    width:200px;
+}
+
+#cityOrZip {
+    display:flex;
+}
