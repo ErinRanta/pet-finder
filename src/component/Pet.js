@@ -5,16 +5,15 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 
 
+
 class Pet extends React.Component {
     constructor(props) {
         super(props);
       this.state = {
         pets: [],
         show: false,
-
       }
     }
-
 
 async getPets() {
   let url = '';
@@ -122,3 +121,4 @@ return (
 
 
 export default Pet;
+
