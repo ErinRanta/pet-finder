@@ -1,75 +1,123 @@
 import React from 'react';
 import axios from 'axios';
+
 import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/Button';
+
 
 
 class Pet extends React.Component {
     constructor(props) {
         super(props);
       this.state = {
-        pets: []
+        pets: [],
+        show: false,
       }
     }
 
+async getPets() {
+  let url = '';
+  let response = await axios.get(url);
+  this.setState({
+    pets: response.data
+  })
+}
 
-// axios? componentdidMount?//
+
+
+componentDidMount() {
+  this.getPets()
+}
+
+handleNew = (e) => {
+  // e.preventDefault();
+  this.setState({ show: true });
+}
 
 
 
-    /* TODO: render all the books in a Carousel */
-
-    
-
-
-render(){
+render(){    
 return (
     <>
-    <h2></h2>
+    <h2>Your Possible Pets!</h2>
+    <Button onClick={this.handleNew}>See your choices!</Button>
+    {console.log(this.state.pets)}
+    {this.state.pets.length ? (
 
-    <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
-          alt="Second slide"
-        />
 
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
+    <Carousel onSlide={this.handleSlide}>
+        {/* {this.state.pets.map(element => */}
+      <Carousel.Item className="card-body">
+        {/* (key above??) */}
         <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
-          alt="Third slide"
+          className="card-body"
+          src="https://place-hold.it/2000x400/blue/white"
+          alt="placeholder" 
+          // (switch to results photos)
         />
-
+      
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>{this.type}</h3>
+          <h3>{this.kid}</h3>
+          <h3>{this.allergy}</h3>
+          <h3>Data of Pet here!</h3>
+          <p>Your new Best Friend?</p> 
+          {/* //data// */}
+                {/* data   */}
         </Carousel.Caption>
-      </Carousel.Item>
+        </Carousel.Item>
+      
+        <Carousel.Item className='card-body'>
+        {/* (key above??) */}
+        <img
+          className="d-block w-60"
+          src="https://place-hold.it/2000x400/blue/white"
+          alt="placeholder" 
+          // (switch to results photos)
+      />
+        <Carousel.Caption>
+          <h3>{this.type}</h3>
+          <h3>{this.kid}</h3>
+          <h3>{this.allergy}</h3>
+          <h3>Data of Pet here!</h3>
+          <p>Your new Best Friend?</p> 
+          {/* //data// */}
+                {/* data   */}
+        </Carousel.Caption>
+        </Carousel.Item>
+
+        <Carousel.Item className='card-body'>
+        {/* (key above??) */}
+          <img
+            className="d-block w-60"
+            src="https://place-hold.it/2000x400/blue/white"
+            alt="placeholder" 
+          // (switch to results photos)
+        />
+          <Carousel.Caption>
+            <h3>{this.type}</h3>
+            <h3>{this.kid}</h3>
+            <h3>{this.allergy}</h3> 
+            <h3>Data of Pet here!</h3>
+          <p>Your new Best Friend?</p> 
+          {/* //data// */}
+                {/* data   */}
+        </Carousel.Caption>
+        </Carousel.Item>
+        
     </Carousel>
-  </>
-  );
+   
+    ) : (
+      
+  <h4>No pets match!</h4>
+ 
+    )}
+   
+    </>
+)
+}    
 }
 
-}
 
 
 export default Pet;

@@ -6,6 +6,7 @@ import Pet from './component/Pet'
 import Footer from './component/Footer'
 
 
+
 class Main extends React.Component {
 
     constructor(props) {
@@ -21,7 +22,7 @@ class Main extends React.Component {
                 <Header />
                 <SearchForm />
                 <Pet pets={this.state.pets} />
-                <Footer />
+                {/* <Footer /> */}
             </>
         )
     }
