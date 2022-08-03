@@ -10,24 +10,29 @@ class Pet extends React.Component {
     constructor(props) {
         super(props);
       this.state = {
-        pets: [],
+        // pets: [],
         show: false,
       }
     }
 
-async getPets() {
-  let url = '';
-  let response = await axios.get(url);
-  this.setState({
-    pets: response.data
-  })
-}
 
 
 
-componentDidMount() {
-  this.getPets()
-}
+
+
+// async getPets() {
+//   let url = '';
+//   let response = await axios.get(url);
+//   this.setState({
+//     pets: response.data
+//   })
+// }
+
+
+
+// componentDidMount() {
+//   this.getPets()
+// }
 
 handleNew = (e) => {
   // e.preventDefault();
@@ -41,12 +46,12 @@ return (
     <>
     <h2>Your Possible Pets!</h2>
     <Button onClick={this.handleNew}>See your choices!</Button>
-    {/* {console.log(this.state.pets)} */}
-    {this.state.pets.length ? (
+    {console.log(this.state.pets)}
+    {this.props.pets.length ? (
 
 
     <Carousel onSlide={this.handleSlide}>
-        {/* {this.state.pets.map(element => */}
+        {this.props.pets.map(element => (
       <Carousel.Item className="card-body">
         {/* (key above??) */}
         <img
@@ -57,54 +62,17 @@ return (
         />
       
         <Carousel.Caption>
-          <h3>{this.type}</h3>
-          <h3>{this.kid}</h3>
-          <h3>{this.allergy}</h3>
+          <h3>{element.type['']}</h3>
+          <h3>{element.data['']}</h3>
+          <h3>{element.detail['']}</h3>
           <h3>Data of Pet here!</h3>
           <p>Your new Best Friend?</p> 
-          {/* //data// */}
-                {/* data   */}
+          
         </Carousel.Caption>
         </Carousel.Item>
+        ))}
       
-        <Carousel.Item className='card-body'>
-        {/* (key above??) */}
-        <img
-          className="d-block w-60"
-          src="https://place-hold.it/2000x400/blue/white"
-          alt="placeholder" 
-          // (switch to results photos)
-      />
-        <Carousel.Caption>
-          <h3>{this.type}</h3>
-          <h3>{this.kid}</h3>
-          <h3>{this.allergy}</h3>
-          <h3>Data of Pet here!</h3>
-          <p>Your new Best Friend?</p> 
-          {/* //data// */}
-                {/* data   */}
-        </Carousel.Caption>
-        </Carousel.Item>
-
-        <Carousel.Item className='card-body'>
-        {/* (key above??) */}
-          <img
-            className="d-block w-60"
-            src="https://place-hold.it/2000x400/blue/white"
-            alt="placeholder" 
-          // (switch to results photos)
-        />
-          <Carousel.Caption>
-            <h3>{this.type}</h3>
-            <h3>{this.kid}</h3>
-            <h3>{this.allergy}</h3> 
-            <h3>Data of Pet here!</h3>
-          <p>Your new Best Friend?</p> 
-          {/* //data// */}
-                {/* data   */}
-        </Carousel.Caption>
-        </Carousel.Item>
-        
+     
     </Carousel>
    
     ) : (
@@ -121,4 +89,3 @@ return (
 
 
 export default Pet;
-

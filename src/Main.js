@@ -22,7 +22,7 @@ class Main extends React.Component {
             hasCat:false,
             hasDog:false,
             hasAllergy:false,
-            petResults:[],
+            // petResults:[],
             error:''
         }
         this.serverUrl = 'https://pet-finder-server.herokuapp.com'
@@ -47,12 +47,12 @@ class Main extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let location = this.state.searchByCity ? `?cityName=${this.state.cityName}` : `?zip=${this.state.zip}`;
-        // location is set to search by either zip code or cityName
-        let hasKids = this.state.hasKids ? `&hasKids=true` : '';
-        let hasCat = this.state.hasCat ? `&hasCat=true` : '';
-        let hasDog = this.state.hasDog ? `&hasDog=true` : '';
-        let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
+        // let location = this.state.searchByCity ? `?cityName=${this.state.cityName}` : `?zip=${this.state.zip}`;
+        // // location is set to search by either zip code or cityName
+        // let hasKids = this.state.hasKids ? `&hasKids=true` : '';
+        // let hasCat = this.state.hasCat ? `&hasCat=true` : '';
+        // let hasDog = this.state.hasDog ? `&hasDog=true` : '';
+        // let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
         
         let searchUrl = `${this.serverUrl}/pets`;
         // let searchUrl = `${this.serverUrl}/pets${location}${hasKids}${hasCat}${hasDog}${hasAllergy}`;
@@ -62,7 +62,7 @@ class Main extends React.Component {
         axios.get(searchUrl)
         .then(response => {
                 console.log('response.data',response.data);
-                this.setState({petResults:response});
+                this.setState({pets:response.data});
             })
             .catch(err => {
                     console.log('error SearchForm handleSubmit',err);
@@ -71,6 +71,7 @@ class Main extends React.Component {
             }
 
     render () {
+        console.log('rendering main');
         return (
             <>
                 <Header loggedIn={this.state.loggedIn}/>
