@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
