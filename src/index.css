@@ -1,13 +1,48 @@
+/* 
+Colors: 
+pink #DE3EA1
+orange #FA7546
+*/
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'PT Sans', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2, h3 {
+  font-weight:700;
+}
+
+/* Button variants */
+.pink {
+  background-color: #DE3EA1;
+  border: 1px solid #DE3EA1;
+  margin:4px;
+}
+
+.pink:hover, .pink:active {
+  background-color: #b33683 !important;
+  border: 1px solid #b33683 !important;
+  box-shadow: 0 0 0 0.2rem #de3ea180 !important;
+}
+
+.pink:focus {
+  box-shadow: 0 0 0 0.2rem #de3ea180 !important;
+}
+
+.orange {
+  background-color: #FA7546;
+  border: 1px solid #FA7546;
+  margin:4px;
+}
+
+.orange:hover, .orange:active {
+  background-color: #b85835 !important;
+  border: 1px solid #b85835 !important;
+  box-shadow: 0 0 0 0.2rem #FA754680 !important;
+}
+
+.orange:focus {
+  box-shadow: 0 0 0 0.2rem #FA754680 !important;
 }
