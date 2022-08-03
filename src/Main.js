@@ -22,7 +22,7 @@ class Main extends React.Component {
             hasCat:false,
             hasDog:false,
             hasAllergy:false,
-            petResults:[],
+            // petResults:[],
             error:''
         }
         this.serverUrl = 'https://pet-finder-server.herokuapp.com'
@@ -62,7 +62,7 @@ class Main extends React.Component {
         axios.get(searchUrl)
         .then(response => {
                 console.log('response.data',response.data);
-                this.setState({petResults:response});
+                this.setState({pets:response.data});
             })
             .catch(err => {
                     console.log('error SearchForm handleSubmit',err);
@@ -71,6 +71,7 @@ class Main extends React.Component {
             }
 
     render () {
+        console.log('rendering main');
         return (
             <>
                 <Header loggedIn={this.state.loggedIn}/>
