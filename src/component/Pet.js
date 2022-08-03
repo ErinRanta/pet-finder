@@ -46,7 +46,7 @@ return (
     <>
     <h2>Your Possible Pets!</h2>
     <Button onClick={this.handleNew}>See your choices!</Button>
-    {/* {console.log(this.state.pets)} */}
+    {console.log(this.state.pets)}
     {this.props.pets.length ? (
 
 
@@ -62,13 +62,12 @@ return (
         />
       
         <Carousel.Caption>
-          <h3>{element.type}</h3>
-          <h3>{this.kid}</h3>
-          <h3>{this.allergy}</h3>
+          <h3>{element.type['']}</h3>
+          <h3>{element.data['']}</h3>
+          <h3>{element.detail['']}</h3>
           <h3>Data of Pet here!</h3>
           <p>Your new Best Friend?</p> 
-          {/* //data// */}
-                {/* data   */}
+          
         </Carousel.Caption>
         </Carousel.Item>
         ))}

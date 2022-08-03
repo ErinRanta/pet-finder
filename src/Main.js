@@ -47,12 +47,12 @@ class Main extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let location = this.state.searchByCity ? `?cityName=${this.state.cityName}` : `?zip=${this.state.zip}`;
-        // location is set to search by either zip code or cityName
-        let hasKids = this.state.hasKids ? `&hasKids=true` : '';
-        let hasCat = this.state.hasCat ? `&hasCat=true` : '';
-        let hasDog = this.state.hasDog ? `&hasDog=true` : '';
-        let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
+        // let location = this.state.searchByCity ? `?cityName=${this.state.cityName}` : `?zip=${this.state.zip}`;
+        // // location is set to search by either zip code or cityName
+        // let hasKids = this.state.hasKids ? `&hasKids=true` : '';
+        // let hasCat = this.state.hasCat ? `&hasCat=true` : '';
+        // let hasDog = this.state.hasDog ? `&hasDog=true` : '';
+        // let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
         
         let searchUrl = `${this.serverUrl}/pets`;
         // let searchUrl = `${this.serverUrl}/pets${location}${hasKids}${hasCat}${hasDog}${hasAllergy}`;
