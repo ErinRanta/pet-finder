@@ -11,17 +11,18 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pets: []
+            pets: [],
+            loggedIn: false
         }
     }
 
     render () {
         return (
             <>
-                <Header />
+                <Header loggedIn={this.state.loggedIn}/>
                 <SearchForm />
                 <Pet pets={this.state.pets} />
-                <Footer />
+                {/* <Footer /> */}
             </>
         )
     }

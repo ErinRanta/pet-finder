@@ -1,0 +1,13 @@
+
+#pageTitle {
+    border-bottom: 3px solid #FA7546;
+    width: fit-content;
+    margin: auto;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+#headerButtons {
+    display:flex;
+    justify-content: flex-end;
+  }
