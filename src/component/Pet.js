@@ -41,7 +41,7 @@ return (
     <>
     <h2>Your Possible Pets!</h2>
     <Button onClick={this.handleNew}>See your choices!</Button>
-    {console.log(this.state.pets)}
+    {/* {console.log(this.state.pets)} */}
     {this.state.pets.length ? (
 
 
