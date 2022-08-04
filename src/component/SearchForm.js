@@ -1,8 +1,8 @@
 import React from 'react';
-// import axios from 'axios';
 
 import { Form, Button, Dropdown } from 'react-bootstrap';
-// import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
+import { Tooltip, Overlay, OverlayTrigger } from 'react-bootstrap';
 
 import './SearchForm.css'
 
@@ -14,16 +14,22 @@ class SearchForm extends React.Component {
             zip:'',
             cityName:'',
             stateName:'',
-            species:'',
+            type:'all',
+            otherType:'',
             hasKids:false,
             hasCat:false,
             hasDog:false,
-            hasAllergy:false,
             petResults:[],
             error:''
         }
         this.serverUrl = 'serverUrl'
     }
+
+    renderTooltip = (props) => (
+        <Tooltip id="stateTooltip" {...props}>
+            Search by 2-letter state code (WA, NY, etc.)
+        </Tooltip>
+    );
 
     handleChange = (e) => {
         let name = e.target.name;
@@ -40,17 +46,21 @@ class SearchForm extends React.Component {
         e.preventDefault();
 
         let location = this.state.searchByCity ? `location=${this.state.cityName}, ${this.state.stateName}` : `location=${this.state.zip}`;
-        // location is set to search by either zip code or cityName
-        let species = this.state.species ? `&species=${this.state.species}` : '';
         let hasKids = this.state.hasKids ? `&hasKids=true` : '';
         let hasCat = this.state.hasCat ? `&hasCat=true` : '';
         let hasDog = this.state.hasDog ? `&hasDog=true` : '';
-        let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
         
-        let searchQuery = `/pets?${location}${species}${hasKids}${hasCat}${hasDog}${hasAllergy}`;
+        let type = ''
+        if(this.state.type === "cat" || this.state.type === "dog"){
+            type = `&type=${this.state.type}`;
+        }
+        else if(this.state.type === "other"){
+            type=`&type=${this.state.otherType}`;
+        }
+        
+        let searchQuery = `/pets?${location}${type}${hasKids}${hasCat}${hasDog}`;
         
         console.log(searchQuery);
-        // return(searchQuery);
 
         this.props.handleSearch(searchQuery);
 
@@ -63,52 +73,102 @@ class SearchForm extends React.Component {
             <Form id="searchForm">
                 <Form.Group id="cityOrZip">
                     <Form.Select name="searchByCity" onChange={this.handleSelectChange}>
-                        <option value="city">Search by zip code</option>
+                        <option value="city">Search by zip</option>
                         <option value="zip">Search by city</option>
                     </Form.Select>
-                        {this.state.searchByCity ? 
+                    {this.state.searchByCity ? 
                             <>
-                            <Form.Control type="text" name="cityName" placeholder="City" onChange={this.handleChange} />
-                            <Form.Control type="text" name="stateName" placeholder="State" onChange={this.handleChange} />
+                                <Form.Control 
+                                    type="text" 
+                                    name="cityName"
+                                    id="cityNameControl" 
+                                    placeholder="City" 
+                                    onChange={this.handleChange} 
+                                    />
+                                <OverlayTrigger
+                                    placement="top"
+                                    delay={{ show: 250, hide: 400 }}
+                                    overlay={this.renderTooltip}
+                                    >
+                                    <Form.Control 
+                                        type="text" 
+                                        name="stateName" 
+                                        id="stateNameControl" 
+                                        placeholder="State" 
+                                        onChange={this.handleChange} 
+                                    />
+                                </OverlayTrigger>
                             </>
                         : 
-                            <Form.Control type="text" name="zip" placeholder="Zip Code" onChange={this.handleChange} />
+                            <Form.Control 
+                                type="text" 
+                                name="zip" 
+                                id="zipControl"
+                                placeholder="Zip Code" 
+                                onChange={this.handleChange} />
                         }
                 </Form.Group>
-
-                {/* <ToggleButtonGroup name="species" onChange={this.handleChange}>
-                    <ToggleButton
-                        key={`cat-button-key`}
-                        id={`cat-button`}
-                        type="radio"
-                        // name="species"
-                        value="cat"
-                        checked={this.state.species === "cat"}
-                    >
-                        Cat
-                    </ToggleButton>
-                    <ToggleButton
-                        key={`dog-button-key`}
-                        id={`dog-button`}
-                        type="radio"
-                        // name="species"
-                        value="dog"
-                        checked={this.state.species === "dog"}
-                    >
-                        Dog
-                    </ToggleButton>
-                    <ToggleButton
-                        key={`other-button-key`}
-                        id={`other-button`}
-                        type="radio"
-                        // name="species"
-                        value="other"
-                        checked={this.state.species === "other"}
-                    >
-                        Other
-                    </ToggleButton>
-                </ToggleButtonGroup> */}
-
+                <Form.Group id="speciesButtons" >
+                    <ToggleButtonGroup name="type" id="toggleGroup">
+                        <ToggleButton
+                            key={`all-button-key`}
+                            id={`all-button`}
+                            type="radio"
+                            name="type"
+                            onChange={this.handleChange}
+                            value="all"
+                            checked={this.state.type === "all"}
+                            className="pink toggle"
+                        >
+                            All
+                        </ToggleButton>
+                        <ToggleButton
+                            key={`cat-button-key`}
+                            id={`cat-button`}
+                            type="radio"
+                            name="type"
+                            onChange={this.handleChange}
+                            value="cat"
+                            checked={this.state.type === "cat"}
+                            className="pink toggle"
+                        >
+                            Cat
+                        </ToggleButton>
+                        <ToggleButton
+                            key={`dog-button-key`}
+                            id={`dog-button`}
+                            type="radio"
+                            name="type"
+                            onChange={this.handleChange}
+                            value="dog"
+                            checked={this.state.type === "dog"}
+                            className="pink toggle"
+                        >
+                            Dog
+                        </ToggleButton>
+                        <ToggleButton
+                                key={`other-button-key`}
+                                id={`other-button`}
+                                type="radio"
+                                name="type"
+                                onChange={this.handleChange}
+                                value="other"
+                                checked={this.state.type === "other"}
+                                className="pink toggle"
+                            >
+                                Other
+                            </ToggleButton>
+                    </ToggleButtonGroup>
+                    <Form.Control 
+                        type="text" 
+                        id="otherTypeInput"
+                        name="otherType" 
+                        placeholder="Other"
+                        // enabled={`${this.state.type === 'other'}`}
+                        disabled={this.state.type !== 'other'}
+                        onChange={this.handleChange}
+                        />
+                </Form.Group>
                 <Form.Group>
                 <Dropdown>
                     <Dropdown.Toggle className="pink" id="advancedSearch">
@@ -133,11 +193,6 @@ class SearchForm extends React.Component {
                                 onChange={this.handleChange}
                                 />
 
-                            <Form.Check 
-                                name="hasAllergy"
-                                label="I need a pet who's hypo-allergenic"
-                                onChange={this.handleChange}
-                                />
                         </Dropdown.Menu>
                     </Dropdown>
                 </Form.Group>

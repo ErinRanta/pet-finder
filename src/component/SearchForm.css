@@ -10,14 +10,13 @@
     margin:4px;
 }
 
-#cityOrZip .form-control {
-    width:100px;
+#searchForm .form-control {
     border: 1px solid #DE3EA1;
     margin:4px;
     background-color: white;
 }
 
-#cityOrZip .form-control:hover, .form-control:active, .form-control:focus {
+#searchForm .form-control:hover, .form-control:active, .form-control:focus {
     border: 1px solid #b33683 !important;
     box-shadow: 0 0 0 0.2rem #de3ea180 !important;
 }
@@ -27,8 +26,26 @@
     align-items:center;
 }
 
+#zipControl {
+    width:195px;
+}
+
+#cityNameControl {
+    width:125px;
+}
+
+#stateNameControl {
+    width:62px;
+}
+
+.tooltip-inner {
+    background-color: #b33683;
+}
+
 .form-select {
     height:38px;
+    border: 1px solid #b33683 !important;
+    border-radius:5px;
 }
 
 .form-select:hover, .form-select:active, .form-select:focus {
@@ -59,6 +76,32 @@
     margin:4px;
 }
 
+#speciesButtons {
+    display: flex;
+    align-items: center;
+    /* margin:0; */
+}
+
+#toggleGroup {
+    margin:0;
+}
+
 [type='radio'] {
     display: none; 
     }
+
+.toggle {
+    margin-left:0 !important;
+    margin-right:0 !important;
+    border-radius:0;
+}
+
+#otherTypeInput {
+    width: 150px;
+    border-radius:0;
+    margin-left:0 !important;
+}
+
+#otherTypeInput:disabled {
+    background-color: #ccc;
+}
