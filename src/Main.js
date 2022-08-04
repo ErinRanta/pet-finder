@@ -32,15 +32,6 @@ class Main extends React.Component {
 
         let searchUrl = `${this.serverUrl}${searchQuery}`;
 
-        // let location = this.state.searchByCity ? `?cityName=${this.state.cityName}` : `?zip=${this.state.zip}`;
-        // // location is set to search by either zip code or cityName
-        // let hasKids = this.state.hasKids ? `&hasKids=true` : '';
-        // let hasCat = this.state.hasCat ? `&hasCat=true` : '';
-        // let hasDog = this.state.hasDog ? `&hasDog=true` : '';
-        // let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
-        
-        let searchUrl = `${this.serverUrl}/pets`;
-        
         console.log(searchUrl);
         
         axios.get(searchUrl)
