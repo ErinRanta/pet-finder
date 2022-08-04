@@ -2,6 +2,7 @@ import React from 'react';
 
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
+import './Pet.css';
 
 
 
@@ -45,25 +46,24 @@ return (
     <>
     <h2>Your Possible Pets!</h2>
     <Button onClick={this.handleNew}>See your choices!</Button>
-    {console.log(this.state.pets)}
+    {console.log(this.props.pets)}
     {this.props.pets.length ? (
 
 
-    <Carousel onSlide={this.handleSlide}>
-        {this.props.pets.map(element => (
-      <Carousel.Item className="card-body">
+    <Carousel> 
+        {this.props.pets.map((element,i) => (
+      <Carousel.Item key={i} className="cardBody">
         {/* (key above??) */}
-        <img
-          className="card-body"
-          src="https://place-hold.it/2000x400/blue/white"
+        <img className="petImage"
+          src={element.picture}
           alt="placeholder" 
           // (switch to results photos)
         />
       
         <Carousel.Caption>
-          <h3>{element.type['']}</h3>
-          <h3>{element.data['']}</h3>
-          <h3>{element.detail['']}</h3>
+          <h3>{element.name}</h3>
+          <h3>{element.species}</h3>
+          <h3>{element.breed}</h3>
           <h3>Data of Pet here!</h3>
           <p>Your new Best Friend?</p> 
           
