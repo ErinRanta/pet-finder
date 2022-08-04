@@ -46,12 +46,12 @@ img.y {
   
   @keyframes x {
     100% {
-      transform: translateX( calc(100vw - 60px) );
+      transform: translateX( calc(100vw - 78px) );
     }
   }
   
   @keyframes y {
     100% {
-      transform: translateY(235px);
+      transform: translateY(230px);
     }
   }

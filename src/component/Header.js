@@ -4,7 +4,7 @@ import React from 'react';
 import axios from 'axios'
 
 import './Header.css'
-// import Login from './Login';
+import Login from './Login';
 import Icons from './Icons';
 
 class Header extends React.Component {
@@ -43,7 +43,7 @@ class Header extends React.Component {
                     :
                         <Button className="orange" onClick={this.toggleLogin}>Log in</Button>
                     } */}
-                    {/* <Login /> */}
+                    <Login />
                 </div>
                 <div id='pageTitle'>
                     {/* <img src={require('../img/cat.png')} alt="cat" /> */}
