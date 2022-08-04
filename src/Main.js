@@ -28,8 +28,8 @@ class Main extends React.Component {
         this.serverUrl = 'https://pet-finder-server.herokuapp.com'
         }
 
-    
     handleSearch = (searchQuery) => {
+
         let searchUrl = `${this.serverUrl}${searchQuery}`;
 
         // let location = this.state.searchByCity ? `?cityName=${this.state.cityName}` : `?zip=${this.state.zip}`;
@@ -40,7 +40,6 @@ class Main extends React.Component {
         // let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
         
         let searchUrl = `${this.serverUrl}/pets`;
-
         
         console.log(searchUrl);
         
@@ -60,6 +59,7 @@ class Main extends React.Component {
     render () {
 
         console.log('Main render this.state.pets',this.state.pets);
+
         console.log('rendering main');
 
         return (
