@@ -1,9 +1,11 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
+// import Button from 'react-bootstrap/Button'
 
 import axios from 'axios'
 
 import './Header.css'
+import Login from './Login';
+import Icons from './Icons';
 
 class Header extends React.Component {
     constructor(props) {
@@ -33,15 +35,18 @@ class Header extends React.Component {
     render() {
         return(
             <>
+                <Icons />
                 <div id='headerButtons'>
-                    {this.state.loggedIn ? 
+                    {/* {this.state.loggedIn ? 
                         <><Button className="orange" onClick={this.showSavedPets}>Show saved pets</Button>
                         <Button className="orange" onClick={this.toggleLogin}>Log Out</Button></>
                     :
                         <Button className="orange" onClick={this.toggleLogin}>Log in</Button>
-                    }
+                    } */}
+                    <Login />
                 </div>
                 <div id='pageTitle'>
+                    {/* <img src={require('../img/cat.png')} alt="cat" /> */}
                     <h1>Pet-Finder</h1>
                 </div>
             </>

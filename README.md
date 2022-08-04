@@ -83,3 +83,12 @@ Favorite: User can save their favorite pets to a "wish list".
 
 Our Git plan is to, at the end of the day, push our work  up on our own branches. Then the next morning, while together, we will merge the work to 'main'. Next, we will individualy pull 'main' to our local machines.
 This way, when we begin working on the new day we will be all caught up and avoid gituations.
+
+## Attribution
+
+### Icons by [Anastasia Latysheva](https://thenounproject.com/browse/creator/latyshevaanastasia1) on The Noun Project
+
+- [Dog](https://thenounproject.com/icon/dog-1598717/)
+- [Cat](https://thenounproject.com/icon/cat-1085589/)
+- [Rabbit](https://thenounproject.com/icon/rabbit-1036122/)
+

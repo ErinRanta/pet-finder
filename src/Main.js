@@ -31,21 +31,23 @@ class Main extends React.Component {
         
     // server url https://pet-finder-server.herokuapp.com/pets
 
-    handleChange = (e) => {
+    // handleChange = (e) => {
     
-        // let {name, value} = e.target;
-        let name = e.target.name;
-        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        this.setState({ [name]: value });
-    }
+    //     // let {name, value} = e.target;
+    //     let name = e.target.name;
+    //     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    //     this.setState({ [name]: value });
+    // }
     
-    handleSelectChange = (e) => {
-        let value = e.target.value;
-        value === 'zip' ? this.setState({searchByCity:true}) : this.setState({searchByCity:false});
-    }
+    // handleSelectChange = (e) => {
+    //     let value = e.target.value;
+    //     value === 'zip' ? this.setState({searchByCity:true}) : this.setState({searchByCity:false});
+    // }
     
-    handleSubmit = (e) => {
-        e.preventDefault();
+    handleSearch = (searchQuery) => {
+
+
+        let searchUrl = `${this.serverUrl}${searchQuery}`;
 
         // let location = this.state.searchByCity ? `?cityName=${this.state.cityName}` : `?zip=${this.state.zip}`;
         // // location is set to search by either zip code or cityName
@@ -56,13 +58,18 @@ class Main extends React.Component {
         
         let searchUrl = `${this.serverUrl}/pets`;
         // let searchUrl = `${this.serverUrl}/pets${location}${hasKids}${hasCat}${hasDog}${hasAllergy}`;
+
         
         console.log(searchUrl);
         
         axios.get(searchUrl)
         .then(response => {
                 console.log('response.data',response.data);
+
+              
+
                 this.setState({pets:response.data});
+
             })
             .catch(err => {
                     console.log('error SearchForm handleSubmit',err);
@@ -71,11 +78,15 @@ class Main extends React.Component {
             }
 
     render () {
+
+        console.log('Main render this.state.pets',this.state.pets);
+
         console.log('rendering main');
+
         return (
             <>
                 <Header loggedIn={this.state.loggedIn}/>
-                <SearchForm handleSubmit={this.handleSubmit} handleSelectChange={this.handleSelectChange} handleChange={this.handleChange} />
+                <SearchForm handleSearch={this.handleSearch} />
                 <Pet pets={this.state.pets} />
                 {/* <Footer /> */}
             </>
