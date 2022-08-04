@@ -73,22 +73,39 @@ class SearchForm extends React.Component {
             <Form id="searchForm">
                 <Form.Group id="cityOrZip">
                     <Form.Select name="searchByCity" onChange={this.handleSelectChange}>
-                        <option value="city">Search by zip code</option>
+                        <option value="city">Search by zip</option>
                         <option value="zip">Search by city</option>
                     </Form.Select>
                     {this.state.searchByCity ? 
                             <>
-                                <Form.Control type="text" name="cityName" placeholder="City" onChange={this.handleChange} />
+                                <Form.Control 
+                                    type="text" 
+                                    name="cityName"
+                                    id="cityNameControl" 
+                                    placeholder="City" 
+                                    onChange={this.handleChange} 
+                                    />
                                 <OverlayTrigger
                                     placement="top"
                                     delay={{ show: 250, hide: 400 }}
                                     overlay={this.renderTooltip}
-                                >
-                                    <Form.Control type="text" name="stateName" placeholder="State" onChange={this.handleChange} />
+                                    >
+                                    <Form.Control 
+                                        type="text" 
+                                        name="stateName" 
+                                        id="stateNameControl" 
+                                        placeholder="State" 
+                                        onChange={this.handleChange} 
+                                    />
                                 </OverlayTrigger>
                             </>
                         : 
-                            <Form.Control type="text" name="zip" placeholder="Zip Code" onChange={this.handleChange} />
+                            <Form.Control 
+                                type="text" 
+                                name="zip" 
+                                id="zipControl"
+                                placeholder="Zip Code" 
+                                onChange={this.handleChange} />
                         }
                 </Form.Group>
                 <Form.Group id="speciesButtons" >
@@ -147,7 +164,7 @@ class SearchForm extends React.Component {
                         id="otherTypeInput"
                         name="otherType" 
                         placeholder="Other"
-                        enabled={this.state.type === 'other'}
+                        // enabled={`${this.state.type === 'other'}`}
                         disabled={this.state.type !== 'other'}
                         onChange={this.handleChange}
                         />
