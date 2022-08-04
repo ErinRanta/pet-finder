@@ -28,24 +28,7 @@ class Main extends React.Component {
         this.serverUrl = 'https://pet-finder-server.herokuapp.com'
         }
 
-        
-    // server url https://pet-finder-server.herokuapp.com/pets
-
-    // handleChange = (e) => {
-    
-    //     // let {name, value} = e.target;
-    //     let name = e.target.name;
-    //     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    //     this.setState({ [name]: value });
-    // }
-    
-    // handleSelectChange = (e) => {
-    //     let value = e.target.value;
-    //     value === 'zip' ? this.setState({searchByCity:true}) : this.setState({searchByCity:false});
-    // }
-    
     handleSearch = (searchQuery) => {
-
 
         let searchUrl = `${this.serverUrl}${searchQuery}`;
 
@@ -57,16 +40,12 @@ class Main extends React.Component {
         // let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
         
         let searchUrl = `${this.serverUrl}/pets`;
-        // let searchUrl = `${this.serverUrl}/pets${location}${hasKids}${hasCat}${hasDog}${hasAllergy}`;
-
         
         console.log(searchUrl);
         
         axios.get(searchUrl)
         .then(response => {
                 console.log('response.data',response.data);
-
-              
 
                 this.setState({pets:response.data});
 
