@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Form, Button, Dropdown } from 'react-bootstrap';
 import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
-import { Tooltip, Overlay, OverlayTrigger } from 'react-bootstrap';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 import './SearchForm.css'
 
