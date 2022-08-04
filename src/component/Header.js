@@ -35,6 +35,7 @@ class Header extends React.Component {
     render() {
         return(
             <>
+                <Icons />
                 <div id='headerButtons'>
                     {/* {this.state.loggedIn ? 
                         <><Button className="orange" onClick={this.showSavedPets}>Show saved pets</Button>
@@ -45,8 +46,7 @@ class Header extends React.Component {
                     <Login />
                 </div>
                 <div id='pageTitle'>
-                    <Icons />
-                    <img src="./../img/cat.png" alt="cat" />
+                    {/* <img src={require('../img/cat.png')} alt="cat" /> */}
                     <h1>Pet-Finder</h1>
                 </div>
             </>

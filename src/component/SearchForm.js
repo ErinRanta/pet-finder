@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let location = this.state.searchByCity ? `location=${this.state.cityName},${this.state.stateName}` : `location=${this.state.zip}`;
+        let location = this.state.searchByCity ? `location=${this.state.cityName}, ${this.state.stateName}` : `location=${this.state.zip}`;
         // location is set to search by either zip code or cityName
         let species = this.state.species ? `&species=${this.state.species}` : '';
         let hasKids = this.state.hasKids ? `&hasKids=true` : '';

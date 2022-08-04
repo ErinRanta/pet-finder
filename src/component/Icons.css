@@ -1,26 +1,57 @@
-/* css bounce: https://css-tricks.com/bounce-element-around-viewport-in-css/ */
+/* css bounce: 
+https://css-tricks.com/bounce-element-around-viewport-in-css/ 
+https://css-tricks.com/starting-css-animations-mid-way/
+*/
 
-#pageTitle img {
+div.x {
     width: 30px;
-    /* height: fit-content; */
+    height: 0px;
+    /* display: inline; */
+    z-index: -1;
+  }
+
+img.y {
+    width: 60px;
   }
   
-  .x {
-    animation: x 13s linear infinite alternate;
+.x {
+    animation: x linear infinite alternate;
   }
   
-  .y {
-    animation: y 7s linear infinite alternate;
+.y {
+    animation: y linear infinite alternate;
+}
+
+.a {
+    animation-duration: 5s;
+}
+.b {
+    animation-duration: 7s;
+}
+.c {
+    animation-duration: 9s;
   }
+
+.d {
+    animation-delay: -1s;
+}
+
+.e {
+    animation-delay: -5s;
+}
+
+.f {
+    animation-delay: -7s;
+}
   
   @keyframes x {
     100% {
-      transform: translateX( calc(100vw - 30px) );
+      transform: translateX( calc(100vw - 60px) );
     }
   }
   
   @keyframes y {
     100% {
-      transform: translateY( calc(100vh - 30px) );
+      transform: translateY(235px);
     }
   }
