@@ -3,6 +3,7 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import './Pet.css';
+import './Main.css';
 
 
 
@@ -44,8 +45,8 @@ handleNew = (e) => {
 render(){    
 return (
     <>
-    <h2>Your Possible Pets!</h2>
-    <Button onClick={this.handleNew}>See your choices!</Button>
+    <h2 id="possible">Your Possible Pets!</h2>
+    <Button id='button'onClick={this.handleNew}>Click to view</Button>
     {console.log(this.props.pets)}
     {this.props.pets.length ? (
 
@@ -61,11 +62,11 @@ return (
         />
       
         <Carousel.Caption>
-          <h3>{element.name}</h3>
+          <h3 id='data'>{element.name}</h3>
           <h3>{element.species}</h3>
           <h3>{element.breed}</h3>
-          <h3>Data of Pet here!</h3>
-          <p>Your new Best Friend?</p> 
+          {/* <h3>Data of Pet here!</h3> */}
+          {/* <p>Your new Best Friend?</p>  */}
           
         </Carousel.Caption>
         </Carousel.Item>
@@ -76,7 +77,7 @@ return (
    
     ) : (
       
-  <h4>No pets match!</h4>
+  <h4>No pets match yet...</h4>
  
     )}
    
