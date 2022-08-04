@@ -1,8 +1,7 @@
 import React from 'react';
-// import axios from 'axios';
 
 import { Form, Button, Dropdown } from 'react-bootstrap';
-import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap'
 import { Tooltip, Overlay, OverlayTrigger } from 'react-bootstrap';
 
 import './SearchForm.css'
@@ -177,11 +176,6 @@ class SearchForm extends React.Component {
                                 onChange={this.handleChange}
                                 />
 
-                            <Form.Check 
-                                name="hasAllergy"
-                                label="I need a pet who's hypo-allergenic"
-                                onChange={this.handleChange}
-                                />
                         </Dropdown.Menu>
                     </Dropdown>
                 </Form.Group>
