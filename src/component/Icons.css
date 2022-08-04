@@ -1,0 +1,26 @@
+/* css bounce: https://css-tricks.com/bounce-element-around-viewport-in-css/ */
+
+#pageTitle img {
+    width: 30px;
+    /* height: fit-content; */
+  }
+  
+  .x {
+    animation: x 13s linear infinite alternate;
+  }
+  
+  .y {
+    animation: y 7s linear infinite alternate;
+  }
+  
+  @keyframes x {
+    100% {
+      transform: translateX( calc(100vw - 30px) );
+    }
+  }
+  
+  @keyframes y {
+    100% {
+      transform: translateY( calc(100vh - 30px) );
+    }
+  }

@@ -1,7 +1,7 @@
 import React from 'react';
 // import axios from 'axios';
 
-import { Form, Button, Dropdown } from 'react-bootstrap';
+import { Form, Button, ToggleButton, ToggleButtonGroup, Dropdown } from 'react-bootstrap';
 
 import './SearchForm.css'
 
@@ -12,6 +12,8 @@ class SearchForm extends React.Component {
             searchByCity:false,
             zip:'',
             cityName:'',
+            stateName:'',
+            species:'',
             hasKids:false,
             hasCat:false,
             hasDog:false,
@@ -22,60 +24,90 @@ class SearchForm extends React.Component {
         this.serverUrl = 'serverUrl'
     }
 
-    // handleChange = (e) => {
+    handleChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        this.setState({ [name]: value });
+    }
     
-    //     // let {name, value} = e.target;
-    //     let name = e.target.name;
-    //     let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    //     this.setState({ [name]: value });
-    // }
+    handleSelectChange = (e) => {
+        let value = e.target.value;
+        value === 'zip' ? this.setState({searchByCity:true}) : this.setState({searchByCity:false});
+    }
     
-    // handleSelectChange = (e) => {
-    //     let value = e.target.value;
-    //     value === 'zip' ? this.setState({searchByCity:true}) : this.setState({searchByCity:false});
-    // }
-    
-    // handleSubmit = (e) => {
-    //     e.preventDefault();
+    handleSubmit = (e) => {
+        e.preventDefault();
 
-    //     let location = this.state.searchByCity ? `cityName=${this.state.cityName}` : `zip=${this.state.zip}`;
-    //     // location is set to search by either zip code or cityName
-    //     let hasKids = this.state.hasKids ? `&hasKids=true` : '';
-    //     let hasCat = this.state.hasCat ? `&hasCat=true` : '';
-    //     let hasDog = this.state.hasDog ? `&hasDog=true` : '';
-    //     let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
+        let location = this.state.searchByCity ? `location=${this.state.cityName},${this.state.stateName}` : `location=${this.state.zip}`;
+        // location is set to search by either zip code or cityName
+        let species = this.state.species ? `&species=${this.state.species}` : '';
+        let hasKids = this.state.hasKids ? `&hasKids=true` : '';
+        let hasCat = this.state.hasCat ? `&hasCat=true` : '';
+        let hasDog = this.state.hasDog ? `&hasDog=true` : '';
+        let hasAllergy = this.state.hasAllergy ? `&hasAllergy=true` : '';
         
-    //     let searchUrl = `${this.serverUrl}/pets?${location}${hasKids}${hasCat}${hasDog}${hasAllergy}`;
+        let searchQuery = `/pets?${location}${species}${hasKids}${hasCat}${hasDog}${hasAllergy}`;
         
-    //     console.log(searchUrl);
-        
-    //     // axios.get(searchUrl)
-    //     // .then(response => {
-    //         //     this.setState({petResults:response});
-    //         // })
-    //         // .catch(err => {
-    //             //     console.log('error SearchForm handleSubmit',err);
-    //             //     this.setState({error:`Sorry, that search doesn't have any results! (${err.code}: ${err.message})`});
-    //             // })
-    //         }
+        console.log(searchQuery);
+        // return(searchQuery);
+
+        this.props.handleSearch(searchQuery);
+
+        }
             
     render() {
-        console.log('render this.state',this.state);
+        console.log('SearchForm render this.state',this.state);
+        console.log('SearchForm render this.state.searchByCity',this.state.searchByCity);
         return(
             <Form id="searchForm">
                 <Form.Group id="cityOrZip">
-                    <Form.Select name="searchByCity" onChange={this.props.handleSelectChange}>
+                    <Form.Select name="searchByCity" onChange={this.handleSelectChange}>
                         <option value="city">Search by zip code</option>
                         <option value="zip">Search by city</option>
                     </Form.Select>
-                    <div className="searchBy">
                         {this.state.searchByCity ? 
-                            <Form.Control type="text" name="cityName" placeholder="City" onChange={this.props.handleChange} />
+                            <>
+                            <Form.Control type="text" name="cityName" placeholder="City" onChange={this.handleChange} />
+                            <Form.Control type="text" name="stateName" placeholder="State" onChange={this.handleChange} />
+                            </>
                         : 
-                            <Form.Control type="text" name="zip" placeholder="Zip Code" onChange={this.props.handleChange} />
+                            <Form.Control type="text" name="zip" placeholder="Zip Code" onChange={this.handleChange} />
                         }
-                    </div>
                 </Form.Group>
+
+                {/* <ToggleButtonGroup name="species" onChange={this.handleChange}>
+                    <ToggleButton
+                        key={`cat-button-key`}
+                        id={`cat-button`}
+                        type="radio"
+                        // name="species"
+                        value="cat"
+                        checked={this.state.species === "cat"}
+                    >
+                        Cat
+                    </ToggleButton>
+                    <ToggleButton
+                        key={`dog-button-key`}
+                        id={`dog-button`}
+                        type="radio"
+                        // name="species"
+                        value="dog"
+                        checked={this.state.species === "dog"}
+                    >
+                        Dog
+                    </ToggleButton>
+                    <ToggleButton
+                        key={`other-button-key`}
+                        id={`other-button`}
+                        type="radio"
+                        // name="species"
+                        value="other"
+                        checked={this.state.species === "other"}
+                    >
+                        Other
+                    </ToggleButton>
+                </ToggleButtonGroup> */}
+
                 <Form.Group>
                 <Dropdown>
                     <Dropdown.Toggle className="pink" id="advancedSearch">
@@ -85,30 +117,30 @@ class SearchForm extends React.Component {
                             <Form.Check 
                                 name="hasKids"
                                 label="I need a pet who's good with kids"
-                                onChange={this.props.handleChange}
+                                onChange={this.handleChange}
                                 />
 
                             <Form.Check 
                                 name="hasCat"
                                 label="I need a pet who's good with other cats"
-                                onChange={this.props.handleChange}
+                                onChange={this.handleChange}
                                 />
 
                             <Form.Check 
                                 name="hasDog"
                                 label="I need a pet who's good with other dogs"
-                                onChange={this.props.handleChange}
+                                onChange={this.handleChange}
                                 />
 
                             <Form.Check 
                                 name="hasAllergy"
                                 label="I need a pet who's hypo-allergenic"
-                                onChange={this.props.handleChange}
+                                onChange={this.handleChange}
                                 />
                         </Dropdown.Menu>
                     </Dropdown>
                 </Form.Group>
-                <Button className="pink" type="submit" onClick={this.props.handleSubmit}>Search</Button>
+                <Button className="pink" type="submit" onClick={this.handleSubmit}>Search</Button>
             </Form>)}
 }
 
