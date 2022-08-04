@@ -1,7 +1,82 @@
 
-#pet-image {
-border-radius: 200px;
-border-color: hotpink;
+.carousel {
+    width: 450px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  
+  .carousel-inner>.item>img {
+    margin: 0 auto;
+  }
+  
+  div.c-wrapper {
+    width: 100%;
+    /* for example */
+    margin: auto;
+  }
+  
+  .carousel-inner>.item>img,
+  .carousel-inner>.item>a>img {
+    width: 100%;
+    /* use this, or not */
+    margin: auto;
+  }
+  
+  .container {
+    border: 1px;
+  }
 
+  .cardBody {
+    border: solid 5px hotpink;
+    color: black;
 
+  }
+.petImage{
+    border-color: hotpink;
+    border-right-color: hotpink;
+    border: 5px;
 }
+
+.carousel-inner {
+    background-color: grey;
+}
+
+#pwb-carousel-bg {
+    background-color: grey;
+}
+
+.container {
+    line-height: 1.4;
+    text-align: center;
+    padding: 44px;
+    color: #333;
+  }
+  
+ #data {
+    font-size: 50px;
+  }
+  
+
+  
+  #highlight-data, .highlight {
+    position: relative;
+  }
+  
+  #highlight-data {
+    display: inline-block;
+  }
+  #highlight-data:before {
+    content: " ";
+    display: block;
+    height: 90%;
+    width: 100%;
+    margin-left: -3px;
+    margin-right: -3px;
+    position: absolute;
+    background: #ffd500;
+    transform: rotate(2deg);
+    top: -1px;
+    left: -1px;
+    border-radius: 20% 25% 20% 24%;
+    padding: 10px 3px 3px 10px;
+  }
