@@ -28,8 +28,6 @@
 
 
 .carousel-inner {
-    display: flex;
-    justify-content: center;
     background-color: grey;
 }
 
@@ -49,6 +47,10 @@
     float: left;
   }
   
+ .cardBody:active {
+    display:flex !important;
+    justify-content: center !important;
+ }
   .cardBody {
     border: 5px solid hotpink;
     padding: 5px;
@@ -57,7 +59,9 @@
     
   }
   
+
   .petImage {
+   
     object-fit:contain;
     max-width: 23em;
     background-color:  grey;
