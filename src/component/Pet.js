@@ -61,8 +61,8 @@ return (
       
         <Carousel.Caption>
           <h3 id='data'>{element.name}</h3>
-          <h3>{element.species}</h3>
-          <h3>{element.breed}</h3>
+          <h3 id='data2'>{element.species}</h3>
+          <h3 id='data3'>{element.breed}</h3>
           {/* <h3>Data of Pet here!</h3> */}
           {/* <p>Your new Best Friend?</p>  */}
           

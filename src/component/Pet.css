@@ -43,9 +43,15 @@
   }
   
  #data {
-    font-size: 10px;
-   
-  }
+    font-size: 25px;
+   }
+#data2 {
+    font-size: 30px;
+   }
+#data3 {
+    font-size: 30px;
+   }
+
   
  .cardBody:active {
     display:flex !important;
