@@ -44,13 +44,14 @@
   
  #data {
     font-size: 10px;
-    float: left;
+   
   }
   
  .cardBody:active {
     display:flex !important;
     justify-content: center !important;
  }
+
   .cardBody {
     border: 5px solid hotpink;
     padding: 5px;
