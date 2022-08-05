@@ -1,6 +1,6 @@
 
 .carousel {
-    width: 400px;
+    width: 500px;
     height: 350px;
     margin: 0 auto;
   }
@@ -50,12 +50,13 @@
   .cardBody {
     border: 5px solid hotpink;
     padding: 5px;
-    width: 25em;
+    /* width: 25em; */
   }
   
   .petImage {
     /* width: -moz-fit-content; */
     object-fit:contain;
+    max-width: 23em;
     /* width: fit-content; */
     background-color:  grey;
     padding: 5px;
