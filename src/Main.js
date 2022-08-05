@@ -4,7 +4,9 @@ import {withAuth0} from '@auth0/auth0-react'
 import Header from './component/Header';
 import SearchForm from './component/SearchForm';
 import Pet from './component/Pet';
-// import Footer from './component/Footer';
+import Loading from './component/Loading';
+import Error from './component/Error';
+// import Footer from './component/Footer`';
 
 
 
@@ -14,15 +16,13 @@ class Main extends React.Component {
         super(props);
         this.state = {
             pets: [],
-            loggedIn: false,
+            loading: false,
             searchByCity:false,
             zip:'',
             cityName:'',
             hasKids:false,
             hasCat:false,
             hasDog:false,
-            hasAllergy:false,
-            // petResults:[],
             error:''
         }
         this.serverUrl = 'https://pet-finder-server.herokuapp.com'
@@ -30,38 +30,47 @@ class Main extends React.Component {
 
 
     handleSearch = async (searchQuery) => {
+        this.setState({loading:true});
+        
         if (this.props.auth0.isAuthenticated){
             let res = await this.props.auth0.getIdTokenClaims();
-
-            let token = res.__raw;
-            
+            let token = res.__raw;            
             let searchUrl = `${this.serverUrl}${searchQuery}`;
 
             console.log(searchUrl);
             
             await axios.get(searchUrl, {headers: {"Authorization": `Bearer ${token}`}})
-            .then(response => {
+                .then(response => {
                     console.log('response.data',response.data);
 
                     this.setState({pets:response.data});
+                    this.setState({loading:false});
 
                 })
                 .catch(err => {
                         console.log('error SearchForm handleSubmit',err);
-                        this.setState({error:`Sorry, that search doesn't have any results! (${err.code}: ${err.message})`});
+                        this.setState({error:`(${err.code}: ${err.message})`});
                     })
             }}
 
     render () {
-
-        console.log('Main render this.state.pets',this.state.pets);
 
         console.log('rendering main');
 
         return (
             <>
                 <Header loggedIn={this.state.loggedIn}/>
+                {this.state.error !== '' ? 
+                    <Error error={this.state.error} />
+                :
+                    ''
+                }
                 <SearchForm handleSearch={this.handleSearch} />
+                {this.state.loading === true ? 
+                    <Loading />
+                :
+                    ''
+                }
                 <Pet pets={this.state.pets} />
                 {/* <Footer /> */}
             </>

@@ -13,7 +13,7 @@ root.render(
 
       domain="dev-5fph28ra.us.auth0.com"
       clientId="k8UNXqVeWyO785Ucb3PgKGDI3NvmGAiI"
-      redirectUri={window.location.origin}
+      redirectUri="https://pet-finder1.netlify.app/"
     >
       <App />
     </Auth0Provider>

@@ -130,6 +130,7 @@ class SearchForm extends React.Component {
                             onChange={this.handleChange}
                             value="cat"
                             checked={this.state.type === "cat"}
+                            // active={this.state.type === "cat"}
                             className="pink toggle"
                         >
                             Cat
@@ -164,7 +165,6 @@ class SearchForm extends React.Component {
                         id="otherTypeInput"
                         name="otherType" 
                         placeholder="Other"
-                        // enabled={`${this.state.type === 'other'}`}
                         disabled={this.state.type !== 'other'}
                         onChange={this.handleChange}
                         />
@@ -172,7 +172,7 @@ class SearchForm extends React.Component {
                 <Form.Group>
                 <Dropdown>
                     <Dropdown.Toggle className="pink" id="advancedSearch">
-                        Advanced Search
+                        More Options
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                             <Form.Check 

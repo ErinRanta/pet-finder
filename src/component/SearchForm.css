@@ -96,6 +96,11 @@
     border-radius:0;
 }
 
+.toggle:checked {
+    border: 1px solid #b33683 !important;
+    box-shadow: 0 0 0 0.2rem #de3ea180 !important;
+}
+
 #otherTypeInput {
     width: 150px;
     border-radius:0;
