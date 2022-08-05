@@ -5,10 +5,6 @@ import Header from './component/Header';
 import SearchForm from './component/SearchForm';
 import Pet from './component/Pet';
 import Loading from './component/Loading';
-import Error from './component/Error';
-// import Footer from './component/Footer`';
-
-
 
 class Main extends React.Component {
 
@@ -60,11 +56,6 @@ class Main extends React.Component {
         return (
             <>
                 <Header loggedIn={this.state.loggedIn}/>
-                {this.state.error !== '' ? 
-                    <Error error={this.state.error} />
-                :
-                    ''
-                }
                 <SearchForm handleSearch={this.handleSearch} />
                 {this.state.loading === true ? 
                     <Loading />
@@ -72,7 +63,6 @@ class Main extends React.Component {
                     ''
                 }
                 <Pet pets={this.state.pets} />
-                {/* <Footer /> */}
             </>
         );
     }
