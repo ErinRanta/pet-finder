@@ -56,6 +56,7 @@
   .petImage {
     /* width: -moz-fit-content; */
     object-fit:contain;
+    max-width: 23em;
     /* width: fit-content; */
     background-color:  grey;
     padding: 5px;
