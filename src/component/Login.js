@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 function Login() {
 
   let { isAuthenticated, loginWithRedirect, error, logout } = useAuth0();
-  console.log(isAuthenticated, error);
+  console.log(isAuthenticated, loginWithRedirect, error, window.location.origin);
 
   return !isAuthenticated 
   ? <Button className="orange" onClick={loginWithRedirect}>Log in</Button>
