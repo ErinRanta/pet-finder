@@ -32,9 +32,9 @@ We will be using API's from [Petfinder](https://www.petfinder.com/developers/) a
 
 ## Wireframe
 
-[FrontEnd Wireframe](FrontendWireframe.png)
+[!FrontEnd Wireframe](FrontendWireframe.png)
 
-[Backend Wireframe](BackendWireframe.png)
+[!Backend Wireframe](BackendWireframe.png)
 
 ## Cooperation Plan
 
