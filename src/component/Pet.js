@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/Button';
 import './Pet.css';
 import './Main.css';
-
+import notFoundImg from '../img/image_not_found.jpg';
 
 
 class Pet extends React.Component {
@@ -40,8 +40,6 @@ handleNew = (e) => {
   this.setState({ show: true });
 }
 
-
-
 render(){    
 return (
     <>
@@ -56,7 +54,7 @@ return (
       <Carousel.Item key={i} className="cardBody">
         {/* (key above??) */}
         <img className="petImage"
-          src={element.picture}
+          src={element.picture || notFoundImg}
           alt="placeholder" 
           // (switch to results photos)
         />
