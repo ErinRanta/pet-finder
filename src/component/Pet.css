@@ -26,16 +26,6 @@
     border: 1px;
   }
 
-  /* .cardBody {
-    border: solid 5px hotpink;
-    color: black; */
-
-  /* } */
-/* .petImage{
-    border-color: hotpink;
-    border-right-color: hotpink;
-    border: 5px; */
-/* } */
 
 .carousel-inner {
     background-color: grey;
@@ -53,7 +43,8 @@
   }
   
  #data {
-    font-size: 50px;
+    font-size: 10px;
+    float: left;
   }
   
   .cardBody {
@@ -65,8 +56,7 @@
   .petImage {
     width: -moz-fit-content;
     width: fit-content;
-    border-color:  hotpink;
-    width: 25em;
+    background-color:  grey;
     padding: 5px;
     margin-bottom: 1em;
   }
