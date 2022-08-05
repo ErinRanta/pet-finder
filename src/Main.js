@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import {withAuth0} from '@auth0/auth0-react'
 import Header from './component/Header';
 import SearchForm from './component/SearchForm';
 import Pet from './component/Pet';
@@ -28,24 +28,29 @@ class Main extends React.Component {
         this.serverUrl = 'https://pet-finder-server.herokuapp.com'
         }
 
-    handleSearch = (searchQuery) => {
 
-        let searchUrl = `${this.serverUrl}${searchQuery}`;
+    handleSearch = async (searchQuery) => {
+        if (this.props.auth0.isAuthenticated){
+            let res = await this.props.auth0.getIdTokenClaims();
 
-        console.log(searchUrl);
-        
-        axios.get(searchUrl)
-        .then(response => {
-                console.log('response.data',response.data);
+            let token = res.__raw;
+            
+            let searchUrl = `${this.serverUrl}${searchQuery}`;
 
-                this.setState({pets:response.data});
+            console.log(searchUrl);
+            
+            await axios.get(searchUrl, {headers: {"Authorization": `Bearer ${token}`}})
+            .then(response => {
+                    console.log('response.data',response.data);
 
-            })
-            .catch(err => {
-                    console.log('error SearchForm handleSubmit',err);
-                    this.setState({error:`Sorry, that search doesn't have any results! (${err.code}: ${err.message})`});
+                    this.setState({pets:response.data});
+
                 })
-            }
+                .catch(err => {
+                        console.log('error SearchForm handleSubmit',err);
+                        this.setState({error:`Sorry, that search doesn't have any results! (${err.code}: ${err.message})`});
+                    })
+            }}
 
     render () {
 
@@ -64,4 +69,4 @@ class Main extends React.Component {
     }
 }
 
-export default Main;
+export default withAuth0(Main);
